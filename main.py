@@ -17,6 +17,7 @@
 """
 import sqlite3
 
+# "tabulate" library necessary to view correctly table format
 from tabulate import tabulate
 
 
