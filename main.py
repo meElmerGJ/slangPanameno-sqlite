@@ -30,9 +30,9 @@ class Slang:
 
 # Format output strings
 lb = "\n\n"
-t = "\t\t"
+tab = "\t\t"
 lb_t = "\n\t\t"
-lb_t2 = f"{lb_t}{t}"
+lb_t2 = f"{lb_t}{tab}"
 
 # Connecting to the database
 conn = sqlite3.connect("slang.db")
@@ -142,7 +142,7 @@ def see_words():
 
 # Getting word meaning function
 def get_meaning():
-    word = input(f"{lb_t}{t}Ingresa la palabra a buscar: ")
+    word = input(f"{lb_t}{tab}Ingresa la palabra a buscar: ")
     try:
         x = get_meaning_by_word(word)
         print(f"{lb_t2}{x[0]}, significa: {x[1]}")
