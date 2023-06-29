@@ -155,8 +155,7 @@ def get_meaning():
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> P R O G R A M <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-print(f"{lb}BIENVENIDO AL DICCIONARIO DE SLANG PANAMEÑO")
-print()
+print(f"{lb}BIENVENIDO AL DICCIONARIO DE SLANG PANAMEÑO\n")
 
 # Program menu
 menu = """
