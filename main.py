@@ -67,10 +67,10 @@ def exist(value_requested):
 
 
 # Edit records (2)
-def edit_record(word_request, new_word, new_meaning):
+def edit_record(value_request, new_word, new_meaning):
     with conn:
         cursor.execute("UPDATE SlangPanameno SET word=:new_word, meaning=:new_meaning WHERE word = :word_request or id = :word_request ",
-                   {'word_request': word_request, 'new_meaning': new_meaning, 'new_word': new_word})
+                       {'word_request': value_request, 'new_meaning': new_meaning, 'new_word': new_word})
 
 
 # Delete record (3)
