@@ -41,24 +41,36 @@ def add_word():
 # Editing word function
 def edit_word():
     value_requested = input(f"{lb_t2}Presiones 0 para ver palabras{lb_t2}Ingrese el numero (#) o la palabra a editar: ")
+    # int(value_requested)
     if value_requested == "0":
         see_words()
         edit_word()
-    else:
-        if exist(value_requested):
-            new_word = input(f"{lb_t2}Ingrese nueva palabra: ")
-            new_meaning = input(f"{lb_t2}Ingrese el significado: ")
-            edit_record(value_requested, new_word, new_meaning)
-            print(f"{lb_t2}¡Palabra editada!")
+    elif exist(value_requested):
+        if value_requested.isnumeric():
+            id_requested = value_requested
+            word_requested = None
         else:
-            print(f"{lb_t2}ERROR: El valor ingresado no existe en la base de datos")
+            word_requested = value_requested
+            id_requested = None
+        new_word = input(f"{lb_t2}Ingrese nueva palabra: ")
+        new_meaning = input(f"{lb_t2}Ingrese el significado: ")
+        edit_record(id_requested, word_requested, new_word, new_meaning)
+        print(f"{lb_t2}¡Palabra editada!")
+    else:
+        print(f"{lb_t2}ERROR: El valor ingresado no existe en la base de datos")
 
 
 # Deleting word function
 def del_word():
-    word = input(f"{lb_t2}Ingresa palabra para eliminar: ")
-    del_record(word)
-    print(f"{lb_t2}¡Palabra eliminada!")
+    value_requested = input(f"{lb_t2}Presiones 0 para ver palabras{lb_t2}Ingrese el numero (#) o la palabra a eliminar: ")
+    if value_requested == "0":
+        see_words()
+        del_word()
+    elif exist(value_requested):
+        del_record(value_requested)
+        print(f"{lb_t2}¡Palabra eliminada!")
+    else:
+        print(f"{lb_t2}ERROR: El valor ingresado no existe en la base de datos")
 
 
 # See words function

@@ -34,16 +34,16 @@ def exist(value_requested):
 
 
 # Edit records (2)
-def edit_record(value_request, new_word, new_meaning):
+def edit_record(id_requested, word_requested, new_word, new_meaning):
     with conn:
-        cursor.execute("UPDATE SlangPanameno SET word=:new_word, meaning=:new_meaning WHERE word = :word_request or id = :word_request ",
-                       {'word_request': value_request, 'new_meaning': new_meaning, 'new_word': new_word})
+        cursor.execute("UPDATE SlangPanameno SET word=:new_word, meaning=:new_meaning WHERE word = :word_requested or id = :id_requested",
+                       {'word_requested': word_requested, 'id_requested': id_requested, 'new_meaning': new_meaning, 'new_word': new_word})
 
 
 # Delete record (3)
-def del_record(word):
+def del_record(value_requested):
     with conn:
-        cursor.execute("DELETE FROM SlangPanameno WHERE word=:word", {'word': word})
+        cursor.execute("DELETE FROM SlangPanameno WHERE word=:word or id = :id", {'word': value_requested, 'id': value_requested})
 
 
 # Show all records (4)
