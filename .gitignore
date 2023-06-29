@@ -8,4 +8,5 @@
 /dataSources.local.xml
 /.idea
 slang.db
+slang.db-journal
 __pycache__/
