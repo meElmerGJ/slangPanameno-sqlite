@@ -18,6 +18,9 @@
 from slangPanameno import Slang
 from queries import *
 # "tabulate" library necessary to view correctly table format
+from tabulate import tabulate
+
+
 def edit_word():
     value_requested = input(f"{lb_t2}Presiones 0 para ver palabras{lb_t2}Ingrese el numero (#) o la palabra a editar: ")
     # int(value_requested)
@@ -40,7 +43,6 @@ def edit_word():
 
 
 # Editing word function
-from tabulate import tabulate
 
 
 # Format output strings
