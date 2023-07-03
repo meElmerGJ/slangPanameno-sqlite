@@ -4,13 +4,18 @@ import sqlite3
 conn = sqlite3.connect("slang.db")
 cursor = conn.cursor()
 
+#
+#
+#
+#
+#
+#
+
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> S Q L    S T A T E M E N T S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 # Creating Table
 try:
-    cursor.execute("drop table if exists SlangPanameno")
-    cursor.execute("CREATE TABLE SlangPanameno(id Integer PRIMARY KEY, word text, meaning text)")
+    cursor.execute("CREATE TABLE SlangPanameno(id Integer PRIMARY KEY, word text unique, meaning text)")
 except sqlite3.OperationalError:
     pass
 
@@ -59,22 +64,35 @@ def get_meaning_by_word(word):
     result = cursor.fetchone()
     return result
 
+################################################################################################################
+# Functions to create data to test other functions, and delete all data, -----> test usage <--------------------
 
-# INSERTING RECORDS TO TEST THE PROJECT
-cursor.execute("""
-            insert into SlangPanameno(word, meaning)
-            values 
-              ('Chombo', 'Se usa para referirse a los afroantillanos y sus descendientes'),
-              ('Jato', 'Casa o hogar'),
-              ('Pana', 'Amigo o camarada'),
-              ('Que xopa!', 'El clasico saludo de nosotros'),
-              ('Taquilla', 'Alguna historia o relato que puede ser falsa'),
-              ('Quilla', 'Dinero'),
-              ('Tirar la posta', 'Contar una historia o chisme'),
-              ('Taquear', 'Comer en exceso'),
-              ('Chiri', 'Frío'),
-              ('Pelea de gallos', 'Competencia o disputa acalorada');
-            """)
+
+# Fill table with 10 records
+def insert_data():
+    try:
+        cursor.execute("""
+                insert into SlangPanameno(word, meaning)
+                values 
+                  ('Chombo', 'Se usa para referirse a los afroantillanos y sus descendientes'),
+                  ('Jato', 'Casa o hogar'),
+                  ('Pana', 'Amigo o camarada'),
+                  ('Que xopa!', 'El clasico saludo de nosotros'),
+                  ('Taquilla', 'Alguna historia o relato que puede ser falsa'),
+                  ('Quilla', 'Dinero'),
+                  ('Tirar la posta', 'Contar una historia o chisme'),
+                  ('Taquear', 'Comer en exceso'),
+                  ('Chiri', 'Frío'),
+                  ('Pelea de gallos', 'Competencia o disputa acalorada');
+                """)
+        return True
+    except sqlite3.IntegrityError:
+        print("\n\t\tWARNING - Los registros ya han sido creados")
+
+
+# Drop all data from the table (only test usage)
+def clear_table():
+    cursor.execute("delete from SlangPanameno")
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> E N D <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

@@ -90,6 +90,17 @@ def get_meaning():
         print(f"{lb_t2}ERROR - Palabra no encontrada")
 
 
+# Filling th table with data
+def fill_table():
+    if insert_data():
+        print(f"{lb_t}Se han creado 10 registros")
+
+
+# Clearing all data from the table
+def delete_all_data():
+    clear_table()
+    print(f"{lb_t}Todos los registro han sido eliminados")
+
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> E N D <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -116,7 +127,9 @@ menu = """
         3) Eliminar palabra 
         4) Ver palabras
         5) Buscar significado de palabra
-        6) Salir
+        6) Rellenar tabla (only test usage)
+        7) Eliminar tabla (only test usage)
+        8) Salir
         """
 
 # Program main loop // Warning! -> *** Need to use Python 3.10 for match - case Statements ***
@@ -126,6 +139,7 @@ while not end:
     try:
         print(menu)
         option = int(input(f"{lb_t}Ingresa una opcion: "))
+
         match option:
             case 1:
                 add_word()
@@ -138,6 +152,10 @@ while not end:
             case 5:
                 get_meaning()
             case 6:
+                fill_table()
+            case 7:
+                delete_all_data()
+            case 8:
                 exit(0)
     except ValueError:
         print(f"{lb_t}ERROR - Ingrese una opcion correcta")
