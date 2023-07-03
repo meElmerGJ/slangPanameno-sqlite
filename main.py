@@ -156,11 +156,9 @@ while not end:
             case 7:
                 delete_all_data()
             case 8:
+                # Closing connection
+                conn.close()
                 exit(0)
     except ValueError:
         print(f"{lb_t}ERROR - Ingrese una opcion correcta")
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> E N D <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-# Closing connection
-conn.close()
