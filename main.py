@@ -18,27 +18,6 @@
 from slangPanameno import Slang
 from queries import *
 # "tabulate" library necessary to view correctly table format
-from tabulate import tabulate
-
-
-# Format output strings
-lb = "\n\n"                 # line break
-tab = "\t\t"                # tabulation
-lb_t = "\n\t\t"             # line break + tabulation
-lb_t2 = f"{lb_t}{tab}"      # line break + double tabulation
-
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> P R O G R A M    F U N C T I O N S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-# Adding word function
-def add_word():
-    word = input(f"{lb_t2}Ingresa la palabra: ")
-    meaning = input(f"{lb_t2}Ingresa el significado: ")
-    new_word = Slang(word, meaning)
-    insert_record(new_word)
-    print(f"{lb_t2}¡Palabra guardada!")
-
-
-# Editing word function
 def edit_word():
     value_requested = input(f"{lb_t2}Presiones 0 para ver palabras{lb_t2}Ingrese el numero (#) o la palabra a editar: ")
     # int(value_requested)
@@ -58,6 +37,30 @@ def edit_word():
         print(f"{lb_t2}¡Palabra editada!")
     else:
         print(f"{lb_t2}ERROR: El valor ingresado no existe en la base de datos")
+
+
+# Editing word function
+from tabulate import tabulate
+
+
+# Format output strings
+lb = "\n\n"                 # line break
+tab = "\t\t"                # tabulation
+lb_t = "\n\t\t"             # line break + tabulation
+lb_t2 = f"{lb_t}{tab}"      # line break + double tabulation
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> P R O G R A M    F U N C T I O N S <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Adding word function
+def add_word():
+    try:
+        word = input(f"{lb_t2}Ingresa la palabra: ")
+        meaning = input(f"{lb_t2}Ingresa el significado: ")
+        new_word = Slang(word, meaning)
+        insert_record(new_word)
+        print(f"{lb_t2}¡Palabra guardada!")
+    except sqlite3.IntegrityError:
+        print(f"{lb_t2}ERROR - La palabra ya existe")
 
 
 # Deleting word function
@@ -93,13 +96,13 @@ def get_meaning():
 # Filling th table with data
 def fill_table():
     if insert_data():
-        print(f"{lb_t}Se han creado 10 registros")
+        print(f"{lb_t2}Se han creado 10 registros")
 
 
 # Clearing all data from the table
 def delete_all_data():
     clear_table()
-    print(f"{lb_t}Todos los registro han sido eliminados")
+    print(f"{lb_t2}Todos los registro han sido eliminados")
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> E N D <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
