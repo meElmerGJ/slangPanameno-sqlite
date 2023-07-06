@@ -81,7 +81,7 @@ def del_word():
 # See words function
 def see_words():
     table = get_records()
-    print(tabulate(table, headers=["#", "PALABRA", "SIGNIFICADO"], tablefmt="psql"))
+    print(tabulate.tabulate(table, headers=["#", "PALABRA", "SIGNIFICADO"], tablefmt="psql"))
     input('\n"Enter" para continuar')
 
 
