@@ -121,49 +121,50 @@ def delete_all_data():
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> P R O G R A M <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-print(f"{lb}BIENVENIDO AL DICCIONARIO DE SLANG PANAMEÑO\n")
+if __name__ == "__main__":
+    print(f"{lb}BIENVENIDO AL DICCIONARIO DE SLANG PANAMEÑO\n")
 
-# Program menu
-menu = """
+    # Program menu
+    menu = """
+    
+            
+            1) Agregar nueva palabra
+            2) Editar palabra
+            3) Eliminar palabra 
+            4) Ver palabras
+            5) Buscar significado de palabra
+            6) Rellenar tabla (only test usage)
+            7) Eliminar tabla (only test usage)
+            8) Salir
+            """
 
-        
-        1) Agregar nueva palabra
-        2) Editar palabra
-        3) Eliminar palabra 
-        4) Ver palabras
-        5) Buscar significado de palabra
-        6) Rellenar tabla (only test usage)
-        7) Eliminar tabla (only test usage)
-        8) Salir
-        """
+    # Program main loop // Warning! -> *** Need to use Python 3.10 for match - case Statements ***
+    end = False
 
-# Program main loop // Warning! -> *** Need to use Python 3.10 for match - case Statements ***
-end = False
+    while not end:
+        try:
+            print(menu)
+            option = int(input(f"{lb_t}Ingresa una opcion: "))
 
-while not end:
-    try:
-        print(menu)
-        option = int(input(f"{lb_t}Ingresa una opcion: "))
-
-        match option:
-            case 1:
-                add_word()
-            case 2:
-                edit_word()
-            case 3:
-                del_word()
-            case 4:
-                see_words()
-            case 5:
-                get_meaning()
-            case 6:
-                fill_table()
-            case 7:
-                delete_all_data()
-            case 8:
-                # Closing connection
-                conn.close()
-                exit(0)
-    except ValueError:
-        print(f"{lb_t}ERROR - Ingrese una opcion correcta")
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> E N D <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            match option:
+                case 1:
+                    add_word()
+                case 2:
+                    edit_word()
+                case 3:
+                    del_word()
+                case 4:
+                    see_words()
+                case 5:
+                    get_meaning()
+                case 6:
+                    fill_table()
+                case 7:
+                    delete_all_data()
+                case 8:
+                    # Closing connection
+                    conn.close()
+                    exit(0)
+        except ValueError:
+            print(f"{lb_t}ERROR - Ingrese una opcion correcta")
+    # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> E N D <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
